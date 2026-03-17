@@ -1,0 +1,211 @@
+def split_csv(s):
+    result = []
+    splitted_str = s.split(",")
+    for string in splitted_str:
+        string = string.strip()
+        if string != "":
+            result.append(string)
+    return result
+
+Find all indexes
+
+find_all(s, sub) → list of start indices where sub occurs (including overlaps).
+def find_all(s, sub):
+    ...
+assert find_all("aaaa", "aa") == [0,1,2]
+
+def mask_email(s):
+    parts = s.split("@")
+    user = parts[0]
+    rest = parts[1]
+    domain_parts = rest.split(".")
+    domain = domain_parts[0]
+    tld = domain_parts[1]
+    #print(user, domain, tld)
+    masked_user=user[0] + "*" * len(user[1:])
+    masked_domain=domain[0] + "*" * len(domain[1:])
+    return masked_user + "@" + masked_domain + "." + tld
+
+mask_email("alice@example.com")
+
+#if statements
+FizzBuzz (classic)
+
+# fizzbuzz(n) → "Fizz", "Buzz", "FizzBuzz", or str(n).
+def fizzbuzz(n):
+    if n % 15 == 0:
+        return "FizzBuzz"
+    elif n % 5 == 0:
+        return "Buzz"
+    elif  n % 3 == 0:
+        return "Fizz"
+    else:
+        return str(n)
+    
+fizzbuzz(25)
+
+#Categorize temperature
+
+temp_label(c) → freezing (<0), cold (<10), mild (<20), warm (<30), hot (else).
+def temp_label(c):
+
+the temp_label function is getting an in int that represents the temparture.
+1. if the number is below zero, it needs to return freezing
+2. if the number is between 0 and 10, it needs return cold
+3. if the number is between 10 and 20, it needs to return mild
+4. if the number is between 30 and 40, it needs to return warm
+5. otherwise retrun hot
+def temp_label(c):
+    if c < 0:
+        return "freezing"
+    elif c < 10:
+        return "cold"
+    elif c < 20:
+        return "mild"
+    elif c < 30:
+        return "warm"
+    else:
+        return "hot"
+
+temp_label(10)
+
+
+# Grade boundaries
+
+def grade(score):
+    if score < 0:
+        raise ValueError("score must be above 0")
+    elif score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
+
+
+# Word frequency
+
+word_freq(text) → dict (lowercased words; split on whitespace; strip punctuation ,.;:!? from ends).
+def word_freq(text):
+    ...
+d = word_freq("Red, red. blue; Blue!")
+assert d == {"red":2, "blue":2}
+
+def word_freq(text):
+    freq = {} # result dict
+    words = text.split # list of strings
+    for word in words:
+        word=word.lowercase()
+        word=word.strip ("",.:;!?"")
+        if word in freq:
+            freq[word] += 1
+        else
+            freq[word] = 1
+return freq
+
+def word_freq(text):
+    freq = {}
+    words = text.split()
+    for word in words:
+        word = word.lower()
+        word = word.strip(",.:;!?")
+        if word in freq:
+            freq[word] += 1
+        else:
+            freq[word] = 1
+    return freq
+
+print(word_freq("Red, red. blue; Blue!"))
+
+# CSV lines > totals
+# so we receive a list of string name:value, we want to convert into a table with name:value with accumulated value
+# first we store the incoming lines in a list, we split every variable so that it would get an entry
+# create an empty dictionary for the final result
+# we go over every placeholder in the list:
+# if the placeholder is not fomratted in this way, key:value, we skip 
+#  if the name is not in the result list: we add the name and the value and store it
+# if the name is there, we just add the value to the existing entry
+
+def totals_by_name(lines):
+    result_dict = {}
+    procsd_list = split.(lines).(,)
+    for value in lines:
+        if value != 
+####
+#print "Gina is 85 years old and has bought Photo Album"
+
+customers = [['Paul', 33, 'Macbook Pro'],
+             ['Anna', 12, 'Looping Louie'],
+             ['Gina', 85, 'Photo Album'],
+             ['Kim', 59, 'Plants']]
+
+#print(f"{customers[2][0]} is {customers[2][1]} years old and has bought {customers[2][2]}")
+
+for idx, customer in enumerate(customers):
+    print(f"Customer number {idx}: {customer[0]} is {customer[1]} years old and has bought {customer[2]}")
+
+######### dictionaries
+restaurant_types = {'Red Lobster':'Seafood','Burger King':'Fast Food','Safeway':'Grocery Store'}
+#restaurant_types['Burger King']
+#restaurant_types.get('Outback Steakhouse','Not found')
+
+# adding a new key
+restaurant_types["Outback Steakhouse"] = "Delicious!"
+
+# updating an existing key
+restaurant_types["Safeway"] = "Grocery"
+restaurant_types
+
+#removing
+restaurant_types.pop('Burger King')
+restaurant_types
+
+### looping
+restaurant_types = {'Red Lobster':'Seafood','Burger King':'Fast Food','Safeway':'Grocery Store'}
+#
+for key, value in restaurant_types.items():
+    print(key)
+
+for key, value in restaurant_types.items():
+    if len(key) > 10:
+        print(key)
+for key, value in restaurant_types.items():
+    if value == 'Seafood':
+        print(key)
+
+####
+["apple", "pear", "plum", "kiwi"]
+
+def group_by(xs, key_fn):
+    result = {}
+    for word in xs:
+        group = key_fn(word)
+        if group not in result:
+            result[group] = []
+        result[group].append(word)
+    return result
+
+print(group_by(["apple", "pear", "plum", "kiwi"], len))
+
+###merge function
+#1. function is getting 2 dicts -  base and override
+#2. create result dict
+#3. loop over base list, for each key, check if it has an identical key in the override list. if yes, store the key:value from override in a new result dict. if not, store in result the key:value that appears in base
+
+def merge_priority(base, override):
+    result = {}
+    for key,value in base.items():
+        if key in override:
+            result[key] = override[key]
+        else:
+            result[key] = value
+    for key,value in override.items():
+        if key not in result:
+            result[key]= value
+    return result
+
+print(merge_priority({"a":1, "b":2}, {"b":9, "c":3}))

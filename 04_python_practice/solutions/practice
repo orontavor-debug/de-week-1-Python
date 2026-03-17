@@ -1,0 +1,189 @@
+practice
+
+Data structures
+
+# Warm-ups
+1.
+def num_type(x):
+    if type(x) == int:
+      return "int"
+    elif type(x) == float:
+      return "float"
+    elif type(x) == bool:
+      return "bool"
+
+2.
+Safe division
+
+def safe_div(a, b, default=None):
+    if b ==0:
+      return default
+    else:
+      return float(a/b)
+
+3. Integer vs float division
+
+Write divisions(a, b) → (a // b, a / b, a % b); handle negatives correctly.
+def divisions(a, b):
+    ...
+assert divisions(7, 3) == (2, 7/3, 1)
+assert divisions(-7, 3)[0] == -3   # floor division
+
+def divisions(a, b):
+  return (a//b, a/b, a % b) # i don't get what else is needed to handle negatives
+
+
+Core
+#4.
+def bankers_round(x, ndigits=0)
+    round(x, ndigits)
+
+def classic_round(x, ndigits=0)
+  if x > 0
+    return (x+0.5)
+  else
+    return (x-0.5)
+
+#5.
+def parse_int(s, base=10, default=None): 
+    try:
+      return int(s,base)
+    execpt:
+      return default
+
+#6.
+
+def true_ratio(seq):
+  counter = 0
+  for value in seq:
+    if value:
+      counter += 1
+  return counter / len(seq)
+
+#Challenge
+
+def running_totals(amounts, ndigits=2):
+  balance=0 #starting at 0
+  results=[] # list of balance history
+  for amount in amounts: # looping through every incoming amount
+    balance +=amount
+    round(balance)
+    results.append(balance) #adding balance to the history of results
+  return results
+
+
+
+
+Numeric exercises
+
+# Warm-ups
+1.
+def num_type(x):
+    if type(x) == int:
+      return "int"
+    elif type(x) == float:
+      return "float"
+    elif type(x) == bool:
+      return "bool"
+
+2.
+Safe division
+
+def safe_div(a, b, default=None):
+    if b ==0:
+      return default
+    else:
+      return float(a/b)
+
+3. Integer vs float division
+
+Write divisions(a, b) → (a // b, a / b, a % b); handle negatives correctly.
+def divisions(a, b):
+    ...
+assert divisions(7, 3) == (2, 7/3, 1)
+assert divisions(-7, 3)[0] == -3   # floor division
+
+def divisions(a, b):
+  return (a//b, a/b, a % b) # i don't get what else is needed to handle negatives
+
+
+Core
+#4.
+def bankers_round(x, ndigits=0):
+    round(x, ndigits)
+
+def classic_round(x, ndigits=0):
+  if x > 0:
+    return (x+0.5)
+  else:
+    return (x-0.5)
+
+#5.
+def parse_int(s, base=10, default=None): 
+    try:
+      return int(s,base)
+    execpt:
+      return default
+
+#6.
+
+def true_ratio(seq):
+  counter = 0
+  for value in seq:
+    if value:
+      counter += 1
+  return counter / len(seq)
+
+#Challenge
+
+def running_totals(amounts, ndigits=2):
+  balance=0 #starting at 0
+  results=[] # list of balance history
+  for amount in amounts: # looping through every incoming amount
+    balance +=amount
+    round(balance)
+    results.append(balance) #adding balance to the history of results
+  return results
+
+String exercises
+
+#1. 
+def middle(s):
+	length=len(s)
+    if length % 2 !=0:
+    	return s[lengt//2]
+    else
+    	even_length=[length//2]-1 ## lost it here
+    	return even_length
+
+assert middle("abc") == "b"
+assert middle("abba") == "bb"
+
+
+#2.
+# Put every word in a sentence to a list, i hope there a python function that just does that.
+# loop the list and check every word, if it's all upper case skip and, else capitilize the first letter, append in every fit into a new processed list
+
+def safe_title(s):
+    splitted_list=[split.s]
+    joint_list=[]
+    for s in splitted_list:
+        if s.isupper:
+            joint_list=append.s
+        else:
+            joint_list=append.s
+
+#3. 
+
+def squash_spaces(s):
+    return " ".join(s.split())
+
+#4.
+def split_csv(s):
+    result = []
+    splitted_str = s.split(",")
+    for string in splitted_str:
+        string = string.strip()
+        if string != "":
+            result.append(string)
+    return result
